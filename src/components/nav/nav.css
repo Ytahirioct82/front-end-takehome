@@ -1,0 +1,26 @@
+.Nav h3 {
+  background-color: rgb(255, 70, 45);
+  color: white;
+  width: 70px;
+  border-radius: 50px;
+  text-align: center;
+  margin-left: 50px;
+}
+
+.Nav Link {
+  border: solid 1px red;
+}
+
+.Nav {
+  border: solid 1px grey;
+}
+
+.search {
+  padding-top: 4px;
+  border: solid 1px grey;
+}
+
+.Nav Button {
+  margin-top: 19px;
+  margin-left: 5px;
+}

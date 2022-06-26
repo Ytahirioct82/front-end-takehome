@@ -1,0 +1,67 @@
+.Form-Container {
+  padding: 30px;
+  background-color: rgb(250, 250, 250);
+}
+
+.Form-Container form {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 48%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  padding: 30px;
+}
+
+.Form-Container form .TextField {
+  border: solid 1px whitesmoke;
+  border-radius: 15px;
+  width: 300px;
+}
+
+.Form-Container .Form-Input {
+  /* border: solid 2px red; */
+  margin: auto;
+  margin-top: 15px;
+}
+
+.Form-Container .Form-Button {
+  display: grid;
+  width: 200%;
+  margin-top: 40px;
+}
+
+.Form-Container .Form-Button Button {
+  background-color: rgb(255, 71, 44);
+  font-weight: 800;
+  width: 97%;
+  margin: auto;
+}
+
+.Form-Container form .Phone {
+  border: solid 1px rgb(192, 190, 190);
+  border-radius: 5px;
+  width: 300px;
+  height: 56px;
+}
+
+.Form-Container form .Time {
+  border: solid 1px rgb(192, 190, 190);
+  border-radius: 5px;
+  width: 300px;
+  height: 56px;
+}
+
+.Form-Container .Form-Time {
+  padding-left: 15px;
+  margin-top: 15px;
+  height: 80px;
+}
+
+.Form-Container form .Menu {
+  border: solid 1px whitesmoke;
+  border-radius: 5px;
+  width: 300px;
+}

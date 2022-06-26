@@ -1,0 +1,42 @@
+main {
+  background-color: rgb(250, 250, 250);
+}
+
+.home {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  background-color: rgb(250, 250, 250);
+  width: 88%;
+  margin: auto;
+}
+
+.restaurants {
+  border: solid 2px white;
+  border-radius: 20px;
+  width: 300px;
+  /* margin-left: 65px; */
+  margin-top: 40px;
+
+  background-color: rgb(255, 255, 255);
+}
+
+.restaurants p {
+  color: grey;
+  margin-top: -10px;
+  font-weight: 600;
+}
+
+.restaurants h3 {
+  color: black;
+  margin-bottom: 30px;
+  font-size: larger;
+  font-weight: 800;
+}
+.restaurants .price {
+  color: rgb(255, 71, 44);
+}
+
+div .container {
+  background-color: rgb(250, 250, 250);
+  padding-bottom: 60px;
+}
