@@ -1,8 +1,6 @@
 import { format } from "date-fns";
 
 const FormatDate = (number, type) => {
-  console.log(number);
-
   if (number && type === "date") {
     const date = new Date(number);
 

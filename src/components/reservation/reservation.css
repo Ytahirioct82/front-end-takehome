@@ -25,18 +25,19 @@
   margin-bottom: 60px;
 }
 
-.reservation-container .content .name,
+.reservation-container .content .contact,
 .reservation-container .content .email,
 .reservation-container .content .guests,
 .reservation-container .content .date,
 .reservation-container .content .time {
   display: grid;
-  grid-template-columns: 75px 35px 45px;
+  grid-template-columns: 85px 10px;
 }
 
-.reservation-container .content .contact {
+.reservation-container .content .name {
   display: grid;
-  grid-template-columns: 90px 5px;
+  grid-template-columns: 70px 60px 50px;
+  box-sizing: content-box;
 }
 
 .reservation-container .content .contact,
@@ -47,12 +48,19 @@
 }
 
 .reservation-container .content .name p,
-.reservation-container .content .contact p,
 .reservation-container .content .email p,
 .reservation-container .content .guests p,
 .reservation-container .content .date p,
 .reservation-container .content .time p {
-  width: 450px;
+  border: solid 1px red;
+  width: max-content;
+  height: fit-content;
+  margin-top: 22px;
+}
+
+.reservation-container .content .contact p {
+  border: solid 1px red;
+  width: 250px;
   height: fit-content;
   margin-top: 22px;
 }

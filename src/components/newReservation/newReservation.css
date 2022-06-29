@@ -1,0 +1,74 @@
+.new-reservation-container {
+  background-color: rgb(250, 250, 250);
+}
+
+.new-reservation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 5px;
+  width: 500px;
+  padding: 20px;
+  margin-left: 10px;
+}
+
+.new-reservation .reservation {
+  width: 210px;
+}
+
+.new-reservation-container .time {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+  width: 520px;
+  padding: 10px;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-bottom: -10px;
+}
+
+.new-reservation-container .Button {
+  margin: 4px;
+}
+
+.new-reservation-container .TextField {
+  width: 230px;
+  margin-top: 15px;
+}
+
+.new-reservation-container .guests {
+  width: 230px;
+  margin-top: -3px;
+}
+
+.new-reservation-container .phone {
+  border: solid 1px rgb(183, 179, 179);
+  width: 230px;
+  height: 53px;
+  margin-top: 16px;
+  margin-bottom: 30px;
+  border-radius: 3px;
+}
+
+.new-reservation-container .reservation p {
+  margin-top: -10px;
+  font-size: small;
+}
+
+.new-reservation-container .date {
+  margin-top: -2px;
+}
+
+.new-reservation-container .form-button {
+  width: fit-content;
+
+  margin-bottom: 30px;
+  padding: 15px;
+}
+
+.new-reservation-container .form-button .button {
+  border: solid 2px grey;
+  width: 530px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  margin: auto;
+}

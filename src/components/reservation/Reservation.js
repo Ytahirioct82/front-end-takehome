@@ -6,7 +6,6 @@ import "./reservation.css";
 import FormattedNavbar from "../nav/FormattedNav";
 import FormatPhoneNumber from "../../format/formatNumber";
 import FormatDate from "../../format/formatDate";
-import FormatTime from "../../format/formatTime";
 
 const GetReservationDetail = () => {
   const { id } = useParams();
@@ -54,12 +53,12 @@ const GetReservationDetail = () => {
 
         <div className="date">
           <h3>Date: </h3>
-          <p>{FormatDate(reservation.time)}</p>
+          <p>{FormatDate(reservation.time, "date")}</p>
         </div>
 
         <div className="time">
           <h3>Time: </h3>
-          <p>{FormatTime(reservation.time)}</p>
+          <p>{FormatDate(reservation.time, "time")}</p>
         </div>
       </div>
     </div>

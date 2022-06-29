@@ -6,7 +6,7 @@ import "./restaurant.css";
 import { Link } from "react-router-dom";
 import FormatPhoneNumber from "../../format/formatNumber";
 import FormattedNavbar from "../nav/FormattedNav";
-import MakeReservation from "../NewReservation";
+import MakeReservation from "../newReservation/NewReservation";
 
 function GetRestaurant() {
   const [restaurant, setRestaurant] = useState({});
