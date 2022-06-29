@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 import Link from "@mui/material/Link";
 import "./nav.css";
 import { useState, useEffect } from "react";
@@ -15,7 +16,7 @@ const API = process.env.REACT_APP_API_URL;
 const Navbar = (props) => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [category, setCategory] = useState({
-    name: "",
+    cuisine: "",
   });
   const [getRestaurant, setGetRestaurant] = useState({
     name: "",
@@ -31,12 +32,19 @@ const Navbar = (props) => {
       })
       .catch((error) => console.warn("catch", error));
   }, []);
-  console.log(API);
+  console.log(getRestaurant.name);
 
   const handleChange = (event) => {
     const { value } = event.target;
-    setCategory({ name: value });
-    props.getAllRestaurants(allRestaurants.filter((rest) => rest.cuisine === event.target.value));
+    setCategory({ cuisine: value });
+
+    value &&
+      axios
+        .get(`${API}/restaurants?filters={"cuisine":"${value}"}`)
+        .then((response) => {
+          props.getAllRestaurants(response.data.restaurants);
+        })
+        .catch((error) => console.warn("catch", error));
   };
 
   const handleTextChange = (event) => {
@@ -46,14 +54,15 @@ const Navbar = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(getRestaurant.name);
     axios
       .get(`${API}/restaurants?&searchTerm=${getRestaurant.name}`)
       .then((response) => {
-        console.log(response.data);
         props.getAllRestaurants(response.data.restaurants);
       })
       .catch((error) => console.warn("catch", error));
     setGetRestaurant({ name: "" });
+    setCategory({ cuisine: "" });
   };
 
   const cuisine = {};
@@ -103,7 +112,7 @@ const Navbar = (props) => {
           <Grid item xs={2}>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <Select
-                value={category.name}
+                value={category.cuisine}
                 onChange={handleChange}
                 displayEmpty
                 inputProps={{ "aria-label": "Without label" }}

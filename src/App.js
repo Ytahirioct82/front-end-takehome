@@ -1,10 +1,12 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
-import Navbar from "./components/nav/Nav";
+import React, { Component } from "react";
 import Home from "./components/homePage/HomePage";
 import AddNewRestaurant from "./components/newRestaurant/NewRestaurant";
 import GetRestaurant from "./components/restaurant/Restaurant";
+import GetRestaurantReservations from "./components/reservations/Reservations";
+import GetReservationDetail from "./components/reservation/Reservation";
 
 function App() {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -24,14 +26,8 @@ function App() {
         />
         <Route path="/newRestaurant" element={<AddNewRestaurant />} />
         <Route path="/restaurants/:id" element={<GetRestaurant />} />
-        {/* <Route exact path="/" element={<AllActivities />} /> */}
-        {/* <Route path="/activity/login" element={<UserLogin isLogged={toggleLog} />} />
-        <Route path="/activity/registration" element={<UserRegistration />} />
-        <Route path="/activity/listings" element={<MyListings />} />
-        <Route path="/activity/favorites" element={<Favorites />} />
-        <Route path="/activity/:id" element={<Activity />} />
-        <Route path="/activity/new" element={<NewPost />} />
-        <Route path="/activity/:id/edit" element={<EditPost />} /> */}
+        <Route path="/reservations/:id" element={<GetRestaurantReservations />} />
+        <Route path="/reservation/:id" element={<GetReservationDetail />} />
       </Routes>
     </div>
   );

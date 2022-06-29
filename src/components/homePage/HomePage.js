@@ -1,5 +1,5 @@
+import React, { Component } from "react";
 import { useState, useEffect } from "react";
-
 import Link from "@mui/material/Link";
 import "./home.css";
 import Navbar from "../nav/Nav";

@@ -1,13 +1,9 @@
 .restaurant {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  background-color: rgb(250, 250, 250);
-
-  /* margin: auto; */
 }
 
 .Venue {
-  border: solid 2px white;
   width: 85%;
   margin-top: 30px;
   padding-left: 30px;
@@ -19,6 +15,7 @@
   background-color: rgb(255, 255, 255);
   margin-top: 30px;
   border-radius: 10px;
+  height: fit-content;
 }
 
 .separator {
@@ -66,7 +63,8 @@
 .Contact,
 .Hours,
 .Info-Cuisine,
-.Info-Price {
+.Info-Price,
+.Info-Link {
   display: flex;
   border: solid 1px #eaeaea;
   height: 45px;
@@ -92,6 +90,7 @@
   padding-left: 10px;
 }
 .Info-Price h4,
-.Info-Price p {
+.Info-Price p,
+.Info-Link {
   padding-left: 10px;
 }

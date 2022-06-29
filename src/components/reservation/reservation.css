@@ -1,0 +1,58 @@
+.reservation-container {
+  background-color: rgb(245, 245, 245);
+  height: 700px;
+}
+
+.reservation-container .content h2 {
+  border: solid 1px grey;
+  display: grid;
+  width: 300px;
+  margin: auto;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.reservation-container .content {
+  border: solid 1px whitesmoke;
+  width: 40%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 40px;
+  background-color: rgb(255, 255, 255);
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.reservation-container .content .name,
+.reservation-container .content .email,
+.reservation-container .content .guests,
+.reservation-container .content .date,
+.reservation-container .content .time {
+  display: grid;
+  grid-template-columns: 75px 35px 45px;
+}
+
+.reservation-container .content .contact {
+  display: grid;
+  grid-template-columns: 90px 5px;
+}
+
+.reservation-container .content .contact,
+.reservation-container .content .guests,
+.reservation-container .content .time {
+  height: 40px;
+  margin-top: -20px;
+}
+
+.reservation-container .content .name p,
+.reservation-container .content .contact p,
+.reservation-container .content .email p,
+.reservation-container .content .guests p,
+.reservation-container .content .date p,
+.reservation-container .content .time p {
+  width: 450px;
+  height: fit-content;
+  margin-top: 22px;
+}
