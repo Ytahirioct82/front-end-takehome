@@ -7,8 +7,10 @@
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   background-color: rgb(250, 250, 250);
-  width: 95%;
+  width: 75%;
   margin: auto;
+  text-align: center;
+  margin-top: 40px;
 }
 
 .res {
@@ -22,4 +24,10 @@
 .res-container .res-home .res h3,
 .res-container .res-home .res p {
   color: black;
+}
+
+.res-container .res-home .no_reservation {
+  width: 1360px;
+  text-align: center;
+  margin-top: 200px;
 }
