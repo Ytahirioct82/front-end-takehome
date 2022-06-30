@@ -1,7 +1,7 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
-import React, { Component } from "react";
+import * as React from "react";
 import Home from "./components/homePage/HomePage";
 import AddNewRestaurant from "./components/newRestaurant/NewRestaurant";
 import GetRestaurant from "./components/restaurant/Restaurant";

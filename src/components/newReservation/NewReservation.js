@@ -163,7 +163,7 @@ function MakeReservation(props) {
       .catch((error) => console.warn(error));
   };
 
-  const style = Object.values(newReservation).filter((entry) => entry != "").length === 7 ? "button-color" : "button";
+  const style = Object.values(newReservation).filter((entry) => entry !== "").length === 7 ? "button-color" : "button";
 
   return (
     <div className="new-reservation-container">

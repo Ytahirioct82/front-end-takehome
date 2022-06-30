@@ -1,11 +1,10 @@
-import React, { Component } from "react";
+import * as React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import "./reservations.css";
 import FormatPhoneNumber from "../../format/formatNumber";
 import FormattedNavbar from "../nav/FormattedNav";
-import { Button } from "@mui/material";
 
 const GetRestaurantReservations = () => {
   const { id } = useParams();

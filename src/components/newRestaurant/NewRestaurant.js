@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import * as React from "react";
 import TextField from "@mui/material/TextField";
 import { useState, useEffect } from "react";
 import "./newRestaurant.css";

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import * as React from "react";
 import Link from "@mui/material/Link";
 import "./nav.css";
 import { useState, useEffect } from "react";
