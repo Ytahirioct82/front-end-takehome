@@ -47,9 +47,7 @@ function MakeReservation(props) {
     axios.get(`${API}/restaurants/${props.id}/reservations`).then((response) => {
       const reserve = [];
       response.data.forEach((res) => {
-        console.log(FormatDate(res.time, "date") === date);
         if (FormatDate(res.time, "date") === date) {
-          console.log("run");
           reserve.push({
             numGuests: res.numGuests,
             time: Number(res.time.slice(11, 13)),
@@ -63,7 +61,7 @@ function MakeReservation(props) {
 
   const getDate = () => {
     let date = new Date().toDateString();
-    setDate(date.slice(4));
+    setDate(FormatDate(date, "date"));
   };
 
   const guestsToTable = {
@@ -97,18 +95,18 @@ function MakeReservation(props) {
     });
 
   const months = {
-    Jan: "01",
-    Feb: "02",
-    Mar: "03",
-    Apr: "04",
+    January: "01",
+    February: "02",
+    March: "03",
+    April: "04",
     May: "05",
-    Jun: "06",
-    Jul: "07",
-    Aug: "08",
-    Sep: "09",
-    Oct: "10",
-    Nov: "11",
-    Dec: "12",
+    June: "06",
+    July: "07",
+    August: "08",
+    September: "09",
+    October: "10",
+    November: "11",
+    December: "12",
   };
 
   const available = timeSlots.map((element) => {
@@ -129,16 +127,15 @@ function MakeReservation(props) {
         key={element.label}
         className="Button"
         variant="contained"
+        disabled={availability === 0}
         onClick={() => {
-          console.log(date);
-          const newDate = date.slice(7, 11) + "-" + months[date.slice(0, 3)] + "-" + date.slice(4, 6);
-          console.log(newDate);
+          const newDate = date.split(" ")[2] + "-" + months[date.split(" ")[0]] + "-" + date.split(" ")[1];
+
           setNewReservation({
             ...newReservation,
             time: `${newDate}T${element.label}:00:00.000Z`,
           });
         }}
-        disabled={availability === 0}
       >
         {time}
       </Button>
@@ -151,7 +148,7 @@ function MakeReservation(props) {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(event.target);
+
     setNewReservation({ ...newReservation, [name]: value });
   };
 
@@ -161,15 +158,10 @@ function MakeReservation(props) {
     axios
       .post(`${API}/reservations`, newReservation)
       .then((response) => {
-        console.log(response.data);
         navigate(`/reservation/${response.data.id}`);
       })
       .catch((error) => console.warn(error));
   };
-
-  console.log(newReservation);
-  console.log(timeSlots);
-  console.log(existingReservations);
 
   return (
     <div className="new-reservation-container">
@@ -212,8 +204,9 @@ function MakeReservation(props) {
               defaultCountry="US"
               onChange={setPhoneNumber}
             />
-            <p style={{ color: "red" }}>{error}</p>
-            {error}
+            <p className="error" style={{ color: "red" }}>
+              {error}
+            </p>
           </div>
 
           <div>

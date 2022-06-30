@@ -26,13 +26,11 @@ const Navbar = (props) => {
     axios
       .get(`${API}/restaurants`)
       .then((response) => {
-        console.log(response.data);
         setAllRestaurants(response.data.restaurants);
         props.getAllRestaurants(response.data.restaurants);
       })
       .catch((error) => console.warn("catch", error));
-  }, []);
-  console.log(getRestaurant.name);
+  }, [props.load]);
 
   const handleChange = (event) => {
     const { value } = event.target;
@@ -54,7 +52,7 @@ const Navbar = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(getRestaurant.name);
+
     axios
       .get(`${API}/restaurants?&searchTerm=${getRestaurant.name}`)
       .then((response) => {

@@ -14,11 +14,10 @@ function App() {
   const getAllRestaurants = (restaurants) => {
     setAllRestaurants(restaurants);
   };
-  console.log(allRestaurants);
+
   return (
     <div>
       <Routes>
-        {/* <Route path="/" element={<Navbar getAllRestaurants={getAllRestaurants} />} /> */}
         <Route
           exact
           path="/"

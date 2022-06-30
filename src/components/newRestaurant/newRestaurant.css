@@ -32,7 +32,7 @@
   margin-top: 40px;
 }
 
-.Form-Container .Form-Button Button {
+.Form-Container .Form-Button button {
   background-color: rgb(255, 71, 44);
   font-weight: 800;
   width: 97%;
@@ -63,4 +63,9 @@
   border: solid 1px whitesmoke;
   border-radius: 5px;
   width: 300px;
+}
+
+.Form-Input .error {
+  margin-top: -2px;
+  font-size: small;
 }

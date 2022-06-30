@@ -56,12 +56,10 @@ function AddNewRestaurant() {
     axios
       .post(`${API}/restaurants`, addRestaurant)
       .then((response) => {
-        console.log(response.data);
         navigate(`/restaurants/${response.data.id}`);
       })
       .catch((error) => console.warn(error));
   };
-  console.log(addRestaurant);
 
   return (
     <div>
@@ -122,7 +120,9 @@ function AddNewRestaurant() {
               defaultCountry="US"
               onChange={setPhoneNumber}
             />
-            {error}
+            <p className="error" style={{ color: "red" }}>
+              {error}
+            </p>
           </div>
 
           <div className="Form-Input">

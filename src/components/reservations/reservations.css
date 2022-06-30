@@ -19,6 +19,7 @@
   margin-top: 40px;
   background-color: rgb(255, 255, 255);
   height: fit-content;
+  padding: 20px;
 }
 
 .res-container .res-home .res h3,
@@ -27,7 +28,8 @@
 }
 
 .res-container .res-home .no_reservation {
-  width: 1360px;
+  margin-left: 0px;
   text-align: center;
   margin-top: 200px;
+  width: 1080px;
 }

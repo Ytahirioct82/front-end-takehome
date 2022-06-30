@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import "./reservations.css";
 import FormatPhoneNumber from "../../format/formatNumber";
 import FormattedNavbar from "../nav/FormattedNav";
+import { Button } from "@mui/material";
 
 const GetRestaurantReservations = () => {
   const { id } = useParams();
@@ -37,7 +38,6 @@ const GetRestaurantReservations = () => {
     </div>
   );
 
-  console.log(reservations);
   return (
     <div>
       <div className="format-nav">

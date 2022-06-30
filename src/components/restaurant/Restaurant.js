@@ -16,13 +16,10 @@ function GetRestaurant() {
     axios
       .get(`${API}/restaurants/${id}`)
       .then((response) => {
-        console.log(response.data);
         setRestaurant(response.data);
       })
       .catch((error) => console.warn("catch", error));
   }, [id]);
-
-  console.log(restaurant.tables);
 
   return (
     <div>

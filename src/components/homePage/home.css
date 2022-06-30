@@ -3,14 +3,15 @@
   grid-template-columns: 25% 25% 25% 25%;
   width: 88%;
   margin: auto;
+  text-align: center;
 }
 
 .restaurants {
   border-radius: 20px;
   width: 300px;
-  /* margin-left: 65px; */
   margin-top: 40px;
   background-color: rgb(255, 255, 255);
+  padding-bottom: 20px;
 }
 
 .restaurants p {
@@ -27,4 +28,10 @@
 }
 .restaurants .price {
   color: rgb(255, 71, 44);
+}
+
+.home .delete .button {
+  border: solid 1px red;
+  background-color: rgb(255, 71, 44);
+  color: white;
 }

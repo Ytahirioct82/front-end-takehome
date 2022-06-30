@@ -15,14 +15,11 @@ const GetReservationDetail = () => {
     axios
       .get(`${API}/reservations/${id}`)
       .then((response) => {
-        console.log(response.data);
         setReservation(response.data);
       })
       .catch((error) => console.log(error));
   }, []);
 
-  console.log(id);
-  console.log(reservation);
   return (
     <div className="reservation-container">
       <FormattedNavbar />

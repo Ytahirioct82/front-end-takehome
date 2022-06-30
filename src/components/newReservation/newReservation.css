@@ -49,7 +49,7 @@
   border-radius: 3px;
 }
 
-.new-reservation-container .reservation p {
+.reservation .error {
   margin-top: -10px;
   font-size: small;
 }
