@@ -163,6 +163,8 @@ function MakeReservation(props) {
       .catch((error) => console.warn(error));
   };
 
+  const style = Object.values(newReservation).filter((entry) => entry != "").length === 7 ? "button-color" : "button";
+
   return (
     <div className="new-reservation-container">
       <form onSubmit={handleSubmit} method="post" className="Form">
@@ -262,7 +264,7 @@ function MakeReservation(props) {
         </div>
         <div className="time">{available}</div>
         <div className="form-button">
-          <Button className="button" variant="contained" type="submit">
+          <Button className={style} variant="contained" type="submit">
             SUBMIT RESERVATION
           </Button>
         </div>

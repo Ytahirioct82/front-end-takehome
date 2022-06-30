@@ -4,7 +4,7 @@ const FormatDate = (number, type) => {
   if (number && type === "date") {
     const date = new Date(number);
 
-    const formattedDate = format(date, "MMMM d yyyy");
+    const formattedDate = format(date, "MMMM dd yyyy");
 
     return formattedDate;
   } else if (number && type === "time") {
