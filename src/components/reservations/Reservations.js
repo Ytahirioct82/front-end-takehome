@@ -22,13 +22,15 @@ const GetRestaurantReservations = () => {
   const reservationsInfo = reservations.length ? (
     reservations.map((res) => {
       return (
-        <div key={res.id} className="res">
-          <Link style={{ textDecoration: "none" }} to={`/reservation/${res.id}`}>
-            <h3>{`${res.firstName} ${res.lastName}`}</h3>
-            <p>{`Contact: ${FormatPhoneNumber(res.phoneNumber)}`}</p>
-            <p>{res.email ? `Email: ${res.email}` : `Email: was not provided`}</p>
-          </Link>
-        </div>
+        <>
+          <div key={res.id} className="res">
+            <Link style={{ textDecoration: "none" }} to={`/reservation/${res.id}`}>
+              <h3>{`${res.firstName} ${res.lastName}`}</h3>
+              <p>{`Contact: ${FormatPhoneNumber(res.phoneNumber)}`}</p>
+              <p>{res.email ? `Email: ${res.email}` : `Email: was not provided`}</p>
+            </Link>
+          </div>
+        </>
       );
     })
   ) : (

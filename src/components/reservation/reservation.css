@@ -22,7 +22,7 @@
   padding: 40px;
   background-color: rgb(255, 255, 255);
   margin-top: 60px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .reservation-container .content .contact,
@@ -52,15 +52,28 @@
 .reservation-container .content .guests p,
 .reservation-container .content .date p,
 .reservation-container .content .time p {
-  border: solid 1px red;
   width: max-content;
   height: fit-content;
   margin-top: 22px;
 }
 
 .reservation-container .content .contact p {
-  border: solid 1px red;
   width: 250px;
   height: fit-content;
   margin-top: 22px;
+}
+
+.delete-edit-container {
+  margin: auto;
+  width: max-content;
+  display: grid;
+  grid-template-columns: 300px 300px;
+}
+
+.delete-edit-container .delete {
+  margin-right: 10px;
+}
+
+.delete-edit-container .edit {
+  margin-left: 10px;
 }

@@ -128,7 +128,7 @@ function MakeReservation(props) {
         className="Button"
         variant="contained"
         disabled={availability === 0}
-        onClick={() => {
+        onClick={(value) => {
           const newDate = date.split(" ")[2] + "-" + months[date.split(" ")[0]] + "-" + date.split(" ")[1];
 
           setNewReservation({
@@ -164,7 +164,7 @@ function MakeReservation(props) {
   };
 
   const style = Object.values(newReservation).filter((entry) => entry !== "").length === 7 ? "button-color" : "button";
-
+  console.log(newReservation);
   return (
     <div className="new-reservation-container">
       <form onSubmit={handleSubmit} method="post" className="Form">

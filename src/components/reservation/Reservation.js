@@ -1,13 +1,15 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./reservation.css";
 import FormattedNavbar from "../nav/FormattedNav";
 import FormatPhoneNumber from "../../format/formatNumber";
 import FormatDate from "../../format/formatDate";
+import { Button } from "@mui/material";
 
 const GetReservationDetail = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [reservation, setReservation] = useState({});
   const API = process.env.REACT_APP_API_URL;
@@ -19,6 +21,8 @@ const GetReservationDetail = () => {
       })
       .catch((error) => console.log(error));
   }, []);
+
+  console.log(reservation);
 
   return (
     <div className="reservation-container">
@@ -57,6 +61,24 @@ const GetReservationDetail = () => {
           <h3>Time: </h3>
           <p>{FormatDate(reservation.time, "time")}</p>
         </div>
+      </div>
+      <div className="delete-edit-container">
+        <>
+          <Button
+            name="delete"
+            value={reservation.id}
+            variant="contained"
+            className="delete"
+            onClick={() => console.log("run")}
+          >
+            Delete Reservation
+          </Button>
+        </>
+        <>
+          <Button name="edit" value={reservation.id} variant="contained" className="edit" onClick={() => navigate("/")}>
+            Edit Reservation
+          </Button>
+        </>
       </div>
     </div>
   );

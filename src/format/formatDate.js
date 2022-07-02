@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import moment from "moment";
 
 const FormatDate = (number, type) => {
   if (number && type === "date") {
@@ -8,14 +9,18 @@ const FormatDate = (number, type) => {
 
     return formattedDate;
   } else if (number && type === "time") {
-    const date = new Date(number);
+    let newTime = moment.utc(number).format("HH");
+    console.log(newTime);
 
-    let formattedDate = format(date, "H:mma");
-    if (formattedDate.slice(5, 7) === "PM") {
-      formattedDate = Number(formattedDate.slice(0, 2)) - 12 + formattedDate.slice(2);
+    if (Number(newTime) > 11) {
+      if (newTime == 12) {
+        return newTime + ":00PM";
+      } else {
+        return Number(newTime - 12) + ":00PM";
+      }
+    } else {
+      return newTime + ":00AM";
     }
-
-    return formattedDate;
   }
 };
 
