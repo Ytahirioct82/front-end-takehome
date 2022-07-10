@@ -33,3 +33,9 @@
   margin-top: 200px;
   width: 1080px;
 }
+
+.restaurant-reservations {
+  border: solid 1px red;
+  text-align: center;
+  margin-top: 40px;
+}

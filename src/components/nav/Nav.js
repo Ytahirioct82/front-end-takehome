@@ -23,6 +23,7 @@ const Navbar = (props) => {
   });
 
   useEffect(() => {
+    // sets allRestaurant state to all restaurants and passes the response to App component.
     axios
       .get(`${API}/restaurants`)
       .then((response) => {
@@ -53,6 +54,7 @@ const Navbar = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    //  passes the response from the user search to App component.
     axios
       .get(`${API}/restaurants?&searchTerm=${getRestaurant.name}`)
       .then((response) => {
@@ -63,6 +65,7 @@ const Navbar = (props) => {
     setCategory({ cuisine: "" });
   };
 
+  //creating a cuisine object of all restaurants type of cuisines.
   const cuisine = {};
   allRestaurants.forEach((rest) => {
     if (!cuisine[rest.cuisine]) {
@@ -70,6 +73,7 @@ const Navbar = (props) => {
     }
   });
 
+  //creating drop down menu with all available cuisines
   const selection = Object.keys(cuisine).map((rest, i) => {
     return (
       <MenuItem key={i} value={rest}>

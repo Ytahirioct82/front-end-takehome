@@ -10,10 +10,9 @@ const FormatDate = (number, type) => {
     return formattedDate;
   } else if (number && type === "time") {
     let newTime = moment.utc(number).format("HH");
-    console.log(newTime);
 
     if (Number(newTime) > 11) {
-      if (newTime == 12) {
+      if (Number(newTime) === 12) {
         return newTime + ":00PM";
       } else {
         return Number(newTime - 12) + ":00PM";

@@ -5,8 +5,10 @@ import "./home.css";
 import Navbar from "../nav/Nav";
 import { Button } from "@mui/material";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Home(props) {
+  const navigate = useNavigate();
   const API = process.env.REACT_APP_API_URL;
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [load, setLoad] = useState("");
@@ -29,6 +31,7 @@ function Home(props) {
       });
   };
 
+  // creating each restaurant with detail and delete/edit buttons
   const listOfRestaurants = allRestaurants.map((rest) => {
     return (
       <div className="restaurants" key={rest.id}>
@@ -38,10 +41,15 @@ function Home(props) {
           <p>{rest.location}</p>
           <p className="price">{rest.price}</p>
         </Link>
-        <div className="delete">
-          <Button className="button" onClick={() => handleDelete(rest.id)}>
-            Delete Restaurant
-          </Button>
+        <div className="delete-edit-restaurant">
+          <div className="delete">
+            <Button variant="contained" className="button" onClick={() => handleDelete(rest.id)}>
+              Delete
+            </Button>
+            <Button variant="contained" className="button" onClick={() => navigate(`/restaurants/edit/${rest.id}`)}>
+              Edit
+            </Button>
+          </div>
         </div>
       </div>
     );

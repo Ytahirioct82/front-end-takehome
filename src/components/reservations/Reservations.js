@@ -9,28 +9,29 @@ import FormattedNavbar from "../nav/FormattedNav";
 const GetRestaurantReservations = () => {
   const { id } = useParams();
   const [reservations, setReservations] = useState([]);
+  const [restaurantName, setRestaurantName] = useState("");
   const API = process.env.REACT_APP_API_URL;
   useEffect(() => {
     axios
-      .get(`${API}/restaurants/${id}/reservations`)
+      .get(`${API}/restaurants/${id}`)
       .then((response) => {
-        setReservations(response.data);
+        console.log(response.data);
+        setReservations(response.data.reservations);
+        setRestaurantName(response.data.name);
       })
       .catch((error) => console.log(error));
   }, []);
 
-  const reservationsInfo = reservations.length ? (
+  const reservationsInfo = reservations[0] ? (
     reservations.map((res) => {
       return (
-        <>
-          <div key={res.id} className="res">
-            <Link style={{ textDecoration: "none" }} to={`/reservation/${res.id}`}>
-              <h3>{`${res.firstName} ${res.lastName}`}</h3>
-              <p>{`Contact: ${FormatPhoneNumber(res.phoneNumber)}`}</p>
-              <p>{res.email ? `Email: ${res.email}` : `Email: was not provided`}</p>
-            </Link>
-          </div>
-        </>
+        <div key={res.id} className="res">
+          <Link style={{ textDecoration: "none" }} to={`/reservation/${id}/${res.id}`}>
+            <h3>{`${res.firstName} ${res.lastName}`}</h3>
+            <p>{`Contact: ${FormatPhoneNumber(res.phoneNumber)}`}</p>
+            <p>{res.email ? `Email: ${res.email}` : `Email: was not provided`}</p>
+          </Link>
+        </div>
       );
     })
   ) : (
@@ -43,6 +44,9 @@ const GetRestaurantReservations = () => {
     <div>
       <div className="format-nav">
         <FormattedNavbar />
+      </div>
+      <div className="restaurant-reservations">
+        <h3>{`Reservations at ${restaurantName}`}</h3>
       </div>
       <div className="res-container">
         <div className="res-home">{reservationsInfo}</div>

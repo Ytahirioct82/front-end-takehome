@@ -11,12 +11,12 @@ import Select from "@mui/material/Select";
 import { Button } from "@mui/material";
 import PhoneInput from "react-phone-number-input";
 import "./newReservation.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function MakeReservation(props) {
   const navigate = useNavigate();
+  const { restaurantId } = useParams();
   const API = process.env.REACT_APP_API_URL;
-  const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState("");
   const [date, setDate] = useState("");
   const [capacity, setCapacity] = useState({});
@@ -24,26 +24,23 @@ function MakeReservation(props) {
   const [newReservation, setNewReservation] = useState({
     firstName: "",
     lastName: "",
-    phoneNumber: "",
+    phoneNumber: "1",
     email: "",
     time: "",
     numGuests: "",
     restaurantId: props.id,
   });
 
+  // sets date to todays date by default if no date is selected
   useEffect(() => {
     if (!date) {
       getDate();
     }
-    if (phoneNumber) {
-      if (phoneNumber.length === 12) {
-        setNewReservation({ ...newReservation, phoneNumber: phoneNumber.slice(2) });
-        setError("");
-      } else if (phoneNumber.length > 12) {
-        setError("Must be a USA number");
-      }
-    }
+
+    // set capacity of tables including opening and closing time of restaurant from Restaurant component via props.
     setCapacity(props.restaurantCapacity);
+
+    // getting all reservation that match the user inputted date.
     axios.get(`${API}/restaurants/${props.id}/reservations`).then((response) => {
       const reserve = [];
       response.data.forEach((res) => {
@@ -57,13 +54,15 @@ function MakeReservation(props) {
       });
       setExistingReservations(reserve);
     });
-  }, [props.id, props.restaurantCapacity, date, phoneNumber]);
+  }, [props.id, props.restaurantCapacity, date]);
 
+  // sets date to todays date by default.
   const getDate = () => {
     let date = new Date().toDateString();
     setDate(FormatDate(date, "date"));
   };
 
+  // arranges type of table depending on number of guests
   const guestsToTable = {
     1: "twoPersonTables",
     2: "twoPersonTables",
@@ -75,6 +74,7 @@ function MakeReservation(props) {
     8: "eightPersonTables",
   };
 
+  //creates an array of available time slots with number of tables available
   const start = capacity.opening && Number(capacity.opening.slice(0, 2));
   const end = capacity.closing && Number(capacity.closing.slice(0, 2));
   const timeSlots = [];
@@ -89,11 +89,14 @@ function MakeReservation(props) {
       });
     }
   }
+
+  //compares existing reservations to available time slots and didacts number of tables if reservation for table exists.
   existingReservations.length &&
     existingReservations.forEach((res, i) => {
       timeSlots[res.time - start][guestsToTable[res.numGuests]] -= 1;
     });
 
+  //used to convert string month to number
   const months = {
     January: "01",
     February: "02",
@@ -109,6 +112,7 @@ function MakeReservation(props) {
     December: "12",
   };
 
+  //checks time slot for available tables at a specific time.
   const available = timeSlots.map((element) => {
     const key = guestsToTable[newReservation.numGuests];
     const availability = element[key];
@@ -155,18 +159,25 @@ function MakeReservation(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios
-      .post(`${API}/reservations`, newReservation)
-      .then((response) => {
-        navigate(`/reservation/${response.data.id}`);
-      })
-      .catch((error) => console.warn(error));
+    if (newReservation.phoneNumber.length > 12) {
+      setError("Must be a USA number");
+    } else {
+      axios
+        .post(`${API}/reservations`, { ...newReservation, phoneNumber: newReservation.phoneNumber.slice(2) })
+        .then((response) => {
+          navigate(`/reservation/${restaurantId}/${response.data.id}`);
+        })
+        .catch((error) => console.warn(error));
+    }
   };
 
-  const style = Object.values(newReservation).filter((entry) => entry !== "").length === 7 ? "button-color" : "button";
-  console.log(newReservation);
+  // used to disable submit button
+  const disables = Object.values(newReservation).filter((entry) => entry !== "").length !== 7;
+  const style = disables ? "disabled" : "button";
+
   return (
     <div className="new-reservation-container">
+      <h1 className="title">Add New Reservation</h1>
       <form onSubmit={handleSubmit} method="post" className="Form">
         <div className="new-reservation">
           <div className="reservation">
@@ -200,11 +211,11 @@ function MakeReservation(props) {
               required
               className="phone"
               placeholder="1 XXX XXXX"
-              id="phoneNumber"
-              value={phoneNumber}
+              name="phoneNumber"
+              value={newReservation.phoneNumber}
               country="US"
               defaultCountry="US"
-              onChange={setPhoneNumber}
+              onChange={(value) => setNewReservation({ ...newReservation, phoneNumber: value })}
             />
             <p className="error" style={{ color: "red" }}>
               {error}
@@ -264,7 +275,7 @@ function MakeReservation(props) {
         </div>
         <div className="time">{available}</div>
         <div className="form-button">
-          <Button className={style} variant="contained" type="submit">
+          <Button className={style} disabled={disables} variant="contained" type="submit">
             SUBMIT RESERVATION
           </Button>
         </div>

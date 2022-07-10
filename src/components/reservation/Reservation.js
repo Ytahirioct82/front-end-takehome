@@ -10,7 +10,7 @@ import { Button } from "@mui/material";
 
 const GetReservationDetail = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { restaurantId, id } = useParams();
   const [reservation, setReservation] = useState({});
   const API = process.env.REACT_APP_API_URL;
   useEffect(() => {
@@ -22,7 +22,17 @@ const GetReservationDetail = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  console.log(reservation);
+  // deletes reservation by reservation id
+  const handleDelete = (id) => {
+    axios
+      .delete(`${API}/reservations/${id}`)
+      .then((response) => {
+        navigate(`/reservations/${reservation.restaurantId}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="reservation-container">
@@ -69,13 +79,19 @@ const GetReservationDetail = () => {
             value={reservation.id}
             variant="contained"
             className="delete"
-            onClick={() => console.log("run")}
+            onClick={() => handleDelete(reservation.id)}
           >
             Delete Reservation
           </Button>
         </>
         <>
-          <Button name="edit" value={reservation.id} variant="contained" className="edit" onClick={() => navigate("/")}>
+          <Button
+            name="edit"
+            value={reservation.id}
+            variant="contained"
+            className="edit"
+            onClick={() => navigate(`/reservation/edit/${restaurantId}/${reservation.id}`)}
+          >
             Edit Reservation
           </Button>
         </>

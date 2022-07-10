@@ -31,7 +31,6 @@
 }
 
 .home .delete .button {
-  border: solid 1px red;
-  background-color: rgb(255, 71, 44);
   color: white;
+  margin: 5px;
 }
